@@ -110,6 +110,14 @@ namespace ConsoleAppScreen.Models
         static public string AlignTextCenter(string text, int width)
         {
             // TODO : (Juliska) Szöveg középre igazításának implementációja
+            if (string.IsNullOrEmpty(text))
+            {
+                throw new ArgumentOutOfRangeException("Nem lehet üres szöveg!");
+            }
+            if (width<text.Length)
+            {
+                throw new ArgumentOutOfRangeException("A szélesség nem lehet kisebb, mint a szöveg!");
+            }
             int kiszamolt = (width - text.Length) / 2;
             string kiiras = (new string(' ', kiszamolt)+text+ new string(' ', kiszamolt));
             return kiiras;
@@ -135,6 +143,10 @@ namespace ConsoleAppScreen.Models
             // textA = "abcd"
             // textB = "12345"
             // Kimenet: a1b2c3d45
+            if (string.IsNullOrEmpty(textA)||string.IsNullOrEmpty(textB))
+            {
+                throw new ArgumentOutOfRangeException("Nem lehet üres szöveg!");
+            }
             string vegeredmeny = "";
             int indexA = 0;
             int indexB = 0;
@@ -165,6 +177,14 @@ namespace ConsoleAppScreen.Models
             // textB = "There"
             // iteration = 3
             // Kimenet: HiThereHiThereHiThere
+            if (string.IsNullOrEmpty(textA) || string.IsNullOrEmpty(textB))
+            {
+                throw new ArgumentOutOfRangeException("Nem lehet üres szöveg!");
+            }
+            if (iteration < 1) 
+            {
+                throw new ArgumentOutOfRangeException("A fűzések ismétlési száma nem lehet kisebb, mint 1!");
+            }
             string eredmeny = "";
             do
             {
