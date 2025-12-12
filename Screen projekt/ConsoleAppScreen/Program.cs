@@ -16,13 +16,12 @@ namespace ConsoleAppScreen
             // Például szöveg középre igazítása
             string centeredText = Screen.AlignTextCenter("Középre igazított szöveg", 50);
             Console.WriteLine(centeredText);
-            // Például két szöveg keverése
+            //Például két szöveg keverése
             string mixedText = Screen.MixedStrings("Hello", "World");
             Console.WriteLine(mixedText);
             // Például két szöveg ismétlése
             string repeatedText = Screen.RepeatedStrings("AB", "12", 5);
             Console.WriteLine(repeatedText);
-
 
         }
     }
