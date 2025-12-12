@@ -96,7 +96,7 @@ namespace ConsoleAppScreen.Models
             {
                 byte width = (byte)(x2 - x1);
                 Console.SetCursorPosition(x1, y1);
-                Console.WriteLine(new string(sign, width));
+                Console.WriteLine(new string(sign, width+1));
             }
 
         }
