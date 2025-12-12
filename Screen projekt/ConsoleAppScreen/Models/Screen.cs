@@ -78,14 +78,17 @@ namespace ConsoleAppScreen.Models
         static public string AlignTextCenter(string text, int width)
         {
             // TODO : (Juliska) Szöveg középre igazításának implementációja
-            throw new NotImplementedException();
+            int kiszamolt = (width - text.Length) / 2;
+            string kiiras = (new string(' ', kiszamolt)+text+ new string(' ', kiszamolt));
+            return kiiras;
+            //throw new NotImplementedException();
         }
 
         /// <summary>
         /// Keverve adja vissza a két szöveg karaktereit.
         /// </summary>
-        /// <param name="textA">Az első szöveg.</param>
-        /// <param name="textB">A második szöveg.</param>
+        /// <param name = "textA" > Az első szöveg.</param>
+        /// <param name = "textB" > A második szöveg.</param>
         /// <returns>A két szöveg karaktereinek keverésével elkészített szöveg</returns>
         /// 
         public static string MixedStrings(string textA, string textB)
@@ -100,11 +103,19 @@ namespace ConsoleAppScreen.Models
             // textA = "abcd"
             // textB = "12345"
             // Kimenet: a1b2c3d45
+            string vegeredmeny = "";
+            int indexA = 0;
+            int indexB = 0;
             do
             {
+                vegeredmeny += textA[indexA];
+                indexA++;
+                vegeredmeny += textB[indexB];
+                indexB++;
 
-            } while (indexA==0 && indexB == 0);
-            throw new NotImplementedException();
+            } while (indexA != textA.Length && indexB != textB.Length);
+            return vegeredmeny;
+            //throw new NotImplementedException();
         }
 
         // TODO : (Juliska) Két szöveg ismételt váltakozásának implementációja
@@ -122,8 +133,15 @@ namespace ConsoleAppScreen.Models
             // textB = "There"
             // iteration = 3
             // Kimenet: HiThereHiThereHiThere
-
-            throw new NotImplementedException();
+            string eredmeny = "";
+            do
+            {
+                eredmeny += textA;
+                eredmeny += textB;
+                iteration--;
+            } while (iteration!=0);
+            return eredmeny;
+            //throw new NotImplementedException();
         }
     }
 }
