@@ -19,6 +19,18 @@ namespace ConsoleAppScreen.Models
         static public void DrawRectangle(byte x, byte y, byte width, byte height, char sign = '*')
         {
             // TODO : (Jancsi) Téglalap rajzolásának implementációja a képernyőn
+            for (int i = 0; i < height; i++,y++)
+            {
+                Console.SetCursorPosition(x, y);
+                if (i == 0 || i == height - 1)
+                {
+                    Console.WriteLine(new string(sign, width));
+                }
+                else
+                {
+                    Console.WriteLine(sign + new string(' ', width - 2) + sign);
+                }
+            }
         }
 
         /// <summary>
@@ -32,6 +44,11 @@ namespace ConsoleAppScreen.Models
         static public void FillRectangle(byte x, byte y, byte width, byte height, char sign = '■')
         {
             // TODO : (Juliska) Kitöltött téglalap rajzolásának implementációja a képernyőn
+            for (int i = 0; i < height; i++, y++)
+            {
+                Console.SetCursorPosition(x, y);
+                Console.WriteLine(new string(sign, width));
+            }
         }
 
         /// <summary>
@@ -45,6 +62,10 @@ namespace ConsoleAppScreen.Models
         static public void DrawLine(byte x1, byte y1, byte x2, byte y2, char sign = '*')
         {
             // TODO : (jancsi) Vonal rajzolásának implementációja a képernyőn
+            if (x1 == x2)
+            {
+
+            }
         }
 
         /// <summary>
