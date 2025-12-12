@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,7 @@ namespace ConsoleAppScreen.Models
         /// <param name="textA">Az első szöveg.</param>
         /// <param name="textB">A második szöveg.</param>
         /// <returns>A két szöveg karaktereinek keverésével elkészített szöveg</returns>
+        /// 
         public static string MixedStrings(string textA, string textB)
         {
             // TODO : (Jancsi) Két szöveg keverésének implementációja
@@ -77,6 +79,10 @@ namespace ConsoleAppScreen.Models
             // textA = "abcd"
             // textB = "12345"
             // Kimenet: a1b2c3d45
+            do
+            {
+
+            } while (indexA==0 && indexB == 0);
             throw new NotImplementedException();
         }
 
