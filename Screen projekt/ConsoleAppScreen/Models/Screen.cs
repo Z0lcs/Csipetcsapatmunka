@@ -20,7 +20,15 @@ namespace ConsoleAppScreen.Models
         static public void DrawRectangle(byte x, byte y, byte width, byte height, char sign = '*')
         {
             // TODO : (Jancsi) Téglalap rajzolásának implementációja a képernyőn
-            for (int i = 0; i < height; i++,y++)
+            if (x <0 || y < 0)
+            {
+                throw new ArgumentOutOfRangeException("A koordináták nem lehetnek 0-nál kisebbek!");
+            }
+            if (width < 0 || height < 0)
+            {
+                throw new ArgumentOutOfRangeException("A téglalap méretei nem lehetnek 0-nál kisebbek!");
+            }
+            for (int i = 0; i < height; i++, y++)
             {
                 Console.SetCursorPosition(x, y);
                 if (i == 0 || i == height - 1)
@@ -44,6 +52,14 @@ namespace ConsoleAppScreen.Models
         /// <param name="sign">A kitöltéshez használt karakter</param>
         static public void FillRectangle(byte x, byte y, byte width, byte height, char sign = '■')
         {
+            if (x < 0 || y < 0)
+            {
+                throw new ArgumentOutOfRangeException("A koordináták nem lehetnek 0-nál kisebbek!");
+            }
+            if (width < 0 || height < 0)
+            {
+                throw new ArgumentOutOfRangeException("A téglalap méretei nem lehetnek 0-nál kisebbek!");
+            }
             // TODO : (Juliska) Kitöltött téglalap rajzolásának implementációja a képernyőn
             for (int i = 0; i < height; i++, y++)
             {
@@ -62,11 +78,27 @@ namespace ConsoleAppScreen.Models
         /// <param name="sign">A vonal rajzolásához használt karakter</param>
         static public void DrawLine(byte x1, byte y1, byte x2, byte y2, char sign = '*')
         {
+            if (x1 < 0 || y1 < 0 || x2 < 0|| y2 < 0)
+            {
+                throw new ArgumentOutOfRangeException("A koordináták nem lehetnek 0-nál kisebbek!");
+            }
             // TODO : (jancsi) Vonal rajzolásának implementációja a képernyőn
             if (x1 == x2)
             {
-
+                byte width = (byte)(y2 - y1);
+                for (int i = 0;i < width+1; i++,y1++)
+                {
+                    Console.SetCursorPosition(x1, y1);
+                    Console.WriteLine(sign);
+                }
             }
+            else if (y1 == y2)
+            {
+                byte width = (byte)(x2 - x1);
+                Console.SetCursorPosition(x1, y1);
+                Console.WriteLine(new string(sign, width));
+            }
+
         }
 
         /// <summary>
@@ -100,10 +132,10 @@ namespace ConsoleAppScreen.Models
             // textA = "abcd"
             // textB = "12345"
             // Kimenet: a1b2c3d45
-            do
-            {
+            //do
+            //{
 
-            } while (indexA==0 && indexB == 0);
+            //} while (indexA==0 && indexB == 0);
             throw new NotImplementedException();
         }
 
