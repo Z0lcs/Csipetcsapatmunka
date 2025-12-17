@@ -78,27 +78,37 @@ namespace ConsoleAppScreen.Models
         /// <param name="sign">A vonal rajzolásához használt karakter</param>
         static public void DrawLine(byte x1, byte y1, byte x2, byte y2, char sign = '*')
         {
-            if (x1 < 0 || y1 < 0 || x2 < 0|| y2 < 0)
+
+            int xKulonbseg = Math.Abs(x2 - x1);
+            int yKulonbseg = Math.Abs(y2 - y1);
+            int xIrany = x1 < x2 ? 1 : -1;
+            int yIrany = y1 < y2 ? 1 : -1;
+            int kulonbseg = xKulonbseg - yKulonbseg;
+
+            while (true)
             {
-                throw new ArgumentOutOfRangeException("A koordináták nem lehetnek 0-nál kisebbek!");
-            }
-            // TODO : (jancsi) Vonal rajzolásának implementációja a képernyőn
-            if (x1 == x2)
-            {
-                byte width = (byte)(y2 - y1);
-                for (int i = 0;i < width+1; i++,y1++)
+                if (x1 >= 0 && y1 >= 0)
                 {
                     Console.SetCursorPosition(x1, y1);
-                    Console.WriteLine(sign);
+                    Console.Write(sign);
+                }
+
+                if (x1 == x2 && y1 == y2) break;
+
+                int e2 = 2 * kulonbseg;
+
+                if (e2 > -yKulonbseg)
+                {
+                    kulonbseg -= yKulonbseg;
+                    x1 = (byte)(x1 + xIrany);
+                }
+
+                if (e2 < xKulonbseg)
+                {
+                    kulonbseg += xKulonbseg;
+                    y1 = (byte)(y1 + yIrany);
                 }
             }
-            else if (y1 == y2)
-            {
-                byte width = (byte)(x2 - x1);
-                Console.SetCursorPosition(x1, y1);
-                Console.WriteLine(new string(sign, width+1));
-            }
-
         }
 
         /// <summary>
